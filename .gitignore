@@ -1,0 +1,31 @@
+# ─────────────────────────────────────────────────────────────
+# Whitelist approach: ignore EVERYTHING, then allow back only the
+# files worth committing. This way compiled programs, debug folders,
+# and OS junk never sneak into the repo — you stay clean by default.
+#
+# NOTE: comments must be on their own line. A "#" after a pattern
+# does NOT start a comment — it becomes part of the pattern.
+# ─────────────────────────────────────────────────────────────
+
+# 1. Ignore everything...
+*
+
+# 2. ...but still let Git look inside folders
+!*/
+
+# 3. Allow back the files you actually want tracked.
+
+# C++ source and headers
+!*.cpp
+!*.h
+!*.hpp
+!*.cc
+
+# Data files your programs read
+!*.txt
+!*.csv
+!*.dat
+
+# Notes / README and this ignore file itself
+!*.md
+!.gitignore
