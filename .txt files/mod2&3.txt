@@ -1,0 +1,42 @@
+Module 1
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    cout << "Hello Inventory System!\n\n";
+
+    cout << "Data Type Sizes:\n";
+    cout << "Size of int: \t" << sizeof(int) << " bytes\n";
+    cout << "Size of float: \t" << sizeof(float) << " bytes\n";
+    cout << "Size of char: \t" << sizeof(char) << " byte\n";
+
+    return 0;
+}
+
+Module 2
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+    string itemName;
+    double cost;
+    int numItems;
+
+    
+    cout << "Total Cost Calculator\n\n";
+    cout << "Enter Item Name: ";
+    cin >> itemName;
+    cout << "Enter Price: ";
+    cin >> cost;
+    cout << "Enter Numer of items: "; 
+    cin >> numItems;
+
+    cout << "Total Cost: " << (numItems * cost) << endl;
+
+    return 0;
+}
