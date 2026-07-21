@@ -77,10 +77,9 @@ int main() {
     do {
         
         cout << "1. Add items to cart" << endl;
-        cout << "2. Remove items from cart" << endl;
-        cout << "3. Checkout" << endl;
-        cout << "4. Exit" << endl; 
-        cout << "Enter your choice (1-4): ";
+        cout << "2. Checkout" << endl;
+        cout << "3. Exit" << endl; 
+        cout << "Enter your choice (1-3): ";
         cin >> choice;
     
         if (choice == 1) {
