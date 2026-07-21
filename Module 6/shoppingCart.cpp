@@ -29,7 +29,7 @@ int main() {
         
         cout << "1. Add items to cart" << endl;
         cout << "2. Remove items from cart" << endl;
-        cout << "3. Get total" << endl;
+        cout << "3. Checkout" << endl;
         cout << "4. Exit" << endl; 
         cout << "Enter your choice (1-4): ";
         cin >> choice;
@@ -66,10 +66,28 @@ void addItems(){
     if (!cartFile) {
         cout << "Could not open cart.txt" << endl;
     } else {
-        cartFile << itemName << " " << itemPrice << " " << itemNum << endl;
+        cartFile << item.name << " " << item.price << " " << item.num << endl;
         cartFile.close();
         cout << "Item added to cart." << endl;
     }
+    
+}
+
+void checkout(){
+    Item item;
+    double grandTotal = 0;
+
+    while (cartFile >> item.name >> item.price >> item.num) {
+        double itemTotal = item.getTotalPrice();
+
+        cout << item.name << " - $" << item.price
+         << " x " << item.num
+         << " = $" << itemTotal << endl;
+
+        grandTotal = grandTotal + itemTotal;
+    }
+
+    cout << "Total: $" << grandTotal << endl;
     
 }
 
