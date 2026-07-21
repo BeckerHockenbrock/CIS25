@@ -1,8 +1,27 @@
 #include <iostream>
+#include <string>
+#include <fstream>
+#include <iomanip>
 
 using namespace std;
 
-int() main {
+class Item{
+public:
+    string name;
+    double price;
+    int num;
+
+    double getTotalPrice() {
+        return price * quantity;
+    }
+
+    int addToFile(){
+
+    }
+    
+}
+
+int main() {
 
     int choice;
 
@@ -31,37 +50,42 @@ int() main {
 }
 
 void addItems(){
-    String itemName;
-    int itemNum;
-    double itemPrice;
+    Item item;
 
     cout << "Item Name: ";
-    cin >> itemName;
+    cin >> item.name;
 
     cout << "Item Price: ";
-    cin >> itemPrice;
+    cin >> item.price;
 
     cout << "Number of Items: ";
-    cin >> itemNum;
+    cin >> item.num;
 
+    ofstream cartFile("cart.txt", ios::app);
 
-
+    if (!cartFile) {
+        cout << "Could not open cart.txt" << endl;
+    } else {
+        cartFile << itemName << " " << itemPrice << " " << itemNum << endl;
+        cartFile.close();
+        cout << "Item added to cart." << endl;
+    }
+    
 }
 
+
+
 void removeItems(){
-    String itemName;
-    int itemNum;
-    double itemPrice;
+
+    Item item;
 
     cout << "Item Name: ";
-    cin >> itemName;
+    cin >> item.name;
 
     cout << "Item Price: ";
-    cin >> itemPrice;
+    cin >> item.price;
 
     cout << "Number of Items: ";
-    cin >> itemNum;
-
-
+    cin >> item.num;
 
 }
