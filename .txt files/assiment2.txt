@@ -1,0 +1,247 @@
+Module 4
+
+Debug:
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+  // added commad in between and ended in a semicolon
+  float n1, n2, n3;
+
+  cout << "Enter three numbers:";
+
+  // need double arrows for both
+  cin >> n1 >> n2 >> n3;
+
+  // Compare n1 to n2 first (outer if) and replaced the single = with ==
+  if (n1 >= n2) {
+    // Nested inside: if n1 also beats n3, n1 is the largest
+    if (n1 >= n3) {
+      cout << "Largest number: " << n1;
+    }
+    // Otherwise n3 must be bigger than n1, and n1 was already >= n2, so n3 is
+    // the largest
+    else {
+      cout << "Largest number: " << n3;
+    }
+  }
+  // Otherwise n2 was bigger than n1
+  else {
+    // Nested inside: if n2 also beats n3, n2 is the largest
+    if (n2 >= n3) {
+      cout << "Largest number: " << n2;
+    }
+    // Otherwise n3 must be bigger than n2, and n2 was already > n1, so n3 is
+    // the largest
+    else {
+      cout << "Largest number: " << n3;
+    }
+  }
+
+  return 0;
+}
+
+Menu: 
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int choice;
+
+    do {
+        cout << "1. Say Hello" << endl;
+        cout << "2. Do some math" << endl;
+        cout << "3. Exit" << endl;
+        cout << "Enter your choice (1-3): ";
+        
+        cin >> choice;
+
+        if (choice == 1) {
+            cout << "Hello there! Welcome to C++." << endl;
+        } else if (choice == 2) {
+            cout << "2 + 2 = 4 (Quick math!)" << endl;
+        } else if (choice == 3) {
+            cout << "Exiting the program. Goodbye!" << endl;
+        } else {
+            cout << "Invalid choice. Please enter a number between 1 and 3." << endl;
+        }
+
+    } while (choice != 3);
+
+    return 0;
+}
+
+Module 5:
+
+#include <iostream>
+
+using namespace std;
+
+void doMultiplication() {
+    int n1, n2;
+    cout << "Enter two numbers: ";
+    cin >> n1 >> n2;
+    cout << "Result: " << n1 * n2 << endl;
+}
+
+void doAddition() {
+    int n1, n2;
+    cout << "Enter two numbers: ";
+    cin >> n1 >> n2;
+    cout << "Result: " << n1 + n2 << endl;
+}
+
+void doSubtraction() {
+    int n1, n2;
+    cout << "Enter two numbers: ";
+    cin >> n1 >> n2;
+    cout << "Result: " << n1 - n2 << endl;
+}
+
+void doDivision() {
+    double n1, n2;
+    cout << "Enter two numbers: ";
+    cin >> n1 >> n2;
+    if (n2 != 0) {
+        cout << "Result: " << n1 / n2 << endl;
+    } else {
+        cout << "Error: Division by zero!" << endl;
+    }
+}
+
+int main() {
+
+    int choice;
+
+    do {
+        
+        cout << "1. Do multiplication" << endl;
+        cout << "2. Do addition" << endl;
+        cout << "3. Do subtraction" << endl;
+        cout << "4. Do division" << endl;
+        cout << "5. Exit" << endl; 
+        cout << "Enter your choice (1-5): ";
+        cin >> choice;
+
+        if (choice == 1) {
+            doMultiplication();
+        } else if (choice == 2) {
+            doAddition();
+        } else if (choice == 3) {
+            doSubtraction();
+        } else if (choice == 4) {
+            doDivision();
+        } else if (choice != 5) {
+            cout << "Invalid choice. Try again." << endl;
+        }
+        cout << endl;
+
+    } while (choice != 5);
+
+    return 0;
+}
+
+Module 6: 
+
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <iomanip>
+
+using namespace std;
+
+class Item{
+public:
+    string name;
+    double price;
+    int num;
+
+    double getTotalPrice() {
+        return price * num;
+    }
+    
+};
+
+
+void addItems(){
+    Item item;
+    
+    cout << "Item Name: ";
+    cin >> item.name;
+    
+    cout << "Item Price: ";
+    cin >> item.price;
+    
+    cout << "Number of Items: ";
+    cin >> item.num;
+    
+    ofstream cartFile("cart.txt", ios::app);
+    
+    if (!cartFile) {
+        cout << "Could not open cart.txt" << endl;
+    } else {
+        cartFile << item.name << " " << item.price << " " << item.num << endl;
+        cartFile.close();
+        cout << "Item added to cart." << endl;
+    }
+    
+}
+
+void checkout(){
+
+    ifstream cartFile("cart.txt");
+
+    if (!cartFile) {
+        cout << "Could not open cart.txt" << endl;
+        return;
+    }
+
+    Item item;
+    double grandTotal = 0;
+
+    cout << fixed << setprecision(2);
+    
+    while (cartFile >> item.name >> item.price >> item.num) {
+        double itemTotal = item.getTotalPrice();
+        
+        cout << item.name << " - $" << item.price
+        << " x " << item.num
+        << " = $" << itemTotal << endl;
+        
+        grandTotal = grandTotal + itemTotal;
+    }
+    
+    cout << "Total: $" << grandTotal << endl;
+    
+}
+    
+int main() {
+    
+    int choice;
+    
+    do {
+        
+        cout << "1. Add items to cart" << endl;
+        cout << "2. Checkout" << endl;
+        cout << "3. Exit" << endl; 
+        cout << "Enter your choice (1-3): ";
+        cin >> choice;
+    
+        if (choice == 1) {
+            addItems();
+        } else if (choice == 2) {
+            checkout();
+        } else if (choice == 3) {
+            cout << "Thank you for shopping!" << endl;
+        } else {
+            cout << "Invalid choice. Try again." << endl;
+        }
+        cout << endl;
+    
+    } while (choice != 3);
+    
+}
