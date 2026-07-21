@@ -50,9 +50,11 @@ void checkout(){
         cout << "Could not open cart.txt" << endl;
         return;
     }
-    
+
     Item item;
     double grandTotal = 0;
+
+    cout << fixed << setprecision(2);
     
     while (cartFile >> item.name >> item.price >> item.num) {
         double itemTotal = item.getTotalPrice();
@@ -66,23 +68,6 @@ void checkout(){
     
     cout << "Total: $" << grandTotal << endl;
     
-}
-
-
-
-void removeItems(){
-    
-    Item item;
-    
-    cout << "Item Name: ";
-    cin >> item.name;
-    
-    cout << "Item Price: ";
-    cin >> item.price;
-    
-    cout << "Number of Items: ";
-    cin >> item.num;
-
 }
     
 int main() {
@@ -101,14 +86,14 @@ int main() {
         if (choice == 1) {
             addItems();
         } else if (choice == 2) {
-            removeItems();
-        } else if (choice == 3) {
             checkout();
-        } else if (choice != 4) {
+        } else if (choice == 3) {
+            cout << "Thank you for shopping!" << endl;
+        } else {
             cout << "Invalid choice. Try again." << endl;
         }
         cout << endl;
     
-    } while (choice != 4);
+    } while (choice != 3);
     
 }
