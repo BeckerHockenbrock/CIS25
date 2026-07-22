@@ -2,23 +2,24 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <string>
 #include <vector>
 
 using namespace std;
 
 class Pokemon{
 public:
-    string id;
+    int id;
     string name;
     string type1;
     string type2;
-    string total;
-    string hp;
-    string attack;
-    string defense;
-    string specialAttack;
-    string specialDefense;
-    string speed;
+    int total;
+    int hp;
+    int attack;
+    int defense;
+    int specialAttack;
+    int specialDefense;
+    int speed;
 
     void displayPokemon() {
         cout << "Name: " << name << endl;
@@ -42,7 +43,7 @@ public:
 vector<Pokemon> loadPokemon() {
     vector<Pokemon> pokemonList;
 
-    ifstream file("pokemon.csv");
+    ifstream file("Pokemon.csv");
 
     if (!file) {
         cout << "Could not open pokemon.csv" << endl;
@@ -55,7 +56,7 @@ vector<Pokemon> loadPokemon() {
       while (getline(file, line)) {
         stringstream ss(line);
 
-        string number;
+        string id;
         string name;
         string type1;
         string type2;
@@ -67,7 +68,7 @@ vector<Pokemon> loadPokemon() {
         string specialDefense;
         string speed;
 
-        getline(ss, number, ',');
+        getline(ss, id, ',');
         getline(ss, name, ',');
         getline(ss, type1, ',');
         getline(ss, type2, ',');
@@ -81,6 +82,7 @@ vector<Pokemon> loadPokemon() {
 
         Pokemon currentPokemon;
 
+        currentPokemon.id = stoi(id);
         currentPokemon.name = name;
         currentPokemon.type1 = type1;
         currentPokemon.type2 = type2;
@@ -97,5 +99,34 @@ vector<Pokemon> loadPokemon() {
     file.close();
 
     return pokemonList;
+
+}
+
+int main(){
+
+    vector<Pokemon> pokemonList = loadPokemon();
+
+    string name;
+    bool found = false;
+
+    cout << "Example Pokemon: " << endl;
+    for (int i = 0; i < 10; i++) {
+        pokemonList[i].displayPokemon();
+        cout << endl;
+    }
+    
+    cout << "Enter Pokemon's Name: ";
+    cin >> name;
+
+    for (int i = 0; i < pokemonList.size(); i++) {
+        if (pokemonList[i].name == name) {
+            pokemonList[i].displayPokemon();
+            found = true;
+        }
+    }
+
+    if(found == false){
+        cout << "Pokemon not found." << endl;
+    }
 
 }
