@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -15,7 +16,7 @@ public:
     string gender;
     string diagnosis;
 
-    string toString(){
+    void toString(){
         cout << id << endl;
         cout << name << endl;
         cout << age << endl;
@@ -27,43 +28,43 @@ public:
 
 const int MAX_PATIENTS = 100;
 Patient* patients = new Patient[MAX_PATIENTS];
-int count = 0;
+int pCount = 0;
 
 void addPatient(){
     Patient patient;
 
-    patient.id = count;
-    count++;
+    patient.id = pCount;
 
     cout << "Enter name: ";
-    cin << patient.name;
+    cin >> patient.name;
 
     cout << "Enter age: ";
-    cin << patient.age;
+    cin >> patient.age;
 
     cout << "Enter gender: ";
-    cin << patient.gender;
+    cin >> patient.gender;
 
     cout << "Enter diagnosis: ";
-    cin << patient.diagnosis;
+    cin >> patient.diagnosis;
 
-    patients[count] = patient;
+    patients[pCount] = patient;
+    pCount++;
 }
 
 void displayPatients() {
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < pCount; i++) {
         cout << patients[i].name << endl;
     }
 }
 
-Pateint searchForPatient() {
+Patient searchForPatient() {
     int searchID;
 
     cout << "Enter Patient ID to search: ";
     cin >> searchID;
 
     int left = 0;
-    int right = count - 1;
+    int right = pCount - 1;
 
     while (left <= right) {
         int mid = (left + right) / 2;
@@ -80,21 +81,22 @@ Pateint searchForPatient() {
     }
 
     cout << "Patient not found." << endl;
+    return Patient();
 }
 
 void updatePatient(){
-    Pateint temp = searchForPateint();
+    Patient temp = searchForPatient();
     cout << "Enter name: ";
-    cin << temp.name;
+    cin >> temp.name;
 
     cout << "Enter age: ";
-    cin << temp.age;
+    cin >> temp.age;
 
     cout << "Enter gender: ";
-    cin << temp.gender;
+    cin >> temp.gender;
 
     cout << "Enter diagnosis: ";
-    cin << temp.diagnosis;
+    cin >> temp.diagnosis;
 
 }
 
@@ -107,11 +109,11 @@ void savePatients(){
         return;
     }
 
-    for(int i = 0; i < count; i++){
+    for(int i = 0; i < pCount; i++){
         
         file << patients[i].id << ",";
         file << patients[i].name << ",";
-        file << patients[i]age << ",";
+        file << patients[i].age << ",";
         file << patients[i].gender << ",";
         file << patients[i].diagnosis << ",\n" ;
 
@@ -119,14 +121,14 @@ void savePatients(){
 }
 
 void loadPatients(){
-    count = 0;
+    pCount = 0;
     ifstream file("patients.txt");
     string line;
 
 
 
     while (getline(file, line)) {
-        Pateint p;
+        Patient p;
         string idS;
         string ageS;
 
@@ -141,8 +143,8 @@ void loadPatients(){
         p.age = stoi(ageS);
         p.id = stoi(idS);
 
-        patients[count] = p;
-        count++;
+        patients[pCount] = p;
+        pCount++;
     }
 
 
@@ -166,7 +168,7 @@ int main(){
         } else if (choice == 2) {
             displayPatients();
         } else if (choice == 3) {
-            searchForPateint();
+            searchForPatient();
         } else if (choice == 4) {
             updatePatient();
         }else if (choice == 5) {
