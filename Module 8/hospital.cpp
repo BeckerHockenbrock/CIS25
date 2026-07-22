@@ -194,7 +194,7 @@ int main() {
     } else if (choice == 5) {
       savePatients();
     } else if (choice == 6) {
-      cout << "Good Bye" << endl;
+      cout << "Good Bye!" << endl;
     } else {
       cout << "Invalid choice. Try again." << endl;
     }
