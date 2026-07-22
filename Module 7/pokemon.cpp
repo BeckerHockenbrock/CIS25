@@ -104,17 +104,20 @@ vector<Pokemon> loadPokemon() {
 
 int main(){
 
+    //loads all the pokemon
     vector<Pokemon> pokemonList = loadPokemon();
 
     string name;
     bool found = false;
 
+    //displays the first 10
     cout << "Example Pokemon: " << endl;
     for (int i = 0; i < 10; i++) {
         pokemonList[i].displayPokemon();
         cout << endl;
     }
     
+    //can look up pokemons name, not repeatable yet though
     cout << "Enter Pokemon's Name: ";
     cin >> name;
 
