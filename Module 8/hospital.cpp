@@ -33,7 +33,8 @@ int pCount = 0;
 void addPatient(){
     Patient patient;
 
-    patient.id = pCount;
+    cout << "Enter ID of patient: ";
+    cin >> patient.id;
 
     cout << "Enter name: ";
     cin >> patient.name;
@@ -53,11 +54,16 @@ void addPatient(){
 
 void displayPatients() {
     for (int i = 0; i < pCount; i++) {
-        cout << patients[i].name << endl;
+        cout << "ID: " << patients[i].id << endl;
+        cout << "Name: " << patients[i].name << endl;
+        cout << "Age: " << patients[i].age << endl;
+        cout << "Gender: " << patients[i].gender << endl;
+        cout << "Diagnosis: " << patients[i].diagnosis << "\n\n";
+
     }
 }
 
-Patient searchForPatient() {
+int searchForPatient() {
     int searchID;
 
     cout << "Enter Patient ID to search: ";
@@ -70,7 +76,7 @@ Patient searchForPatient() {
         int mid = (left + right) / 2;
 
         if (patients[mid].id == searchID) {
-            return patients[mid];
+            return mid;
         }
 
         if (patients[mid].id < searchID) {
@@ -81,11 +87,13 @@ Patient searchForPatient() {
     }
 
     cout << "Patient not found." << endl;
-    return Patient();
+    return -1;
 }
 
 void updatePatient(){
-    Patient temp = searchForPatient();
+    int i = searchForPatient();
+    Patient temp = patients[i];
+
     cout << "Enter name: ";
     cin >> temp.name;
 
@@ -97,6 +105,8 @@ void updatePatient(){
 
     cout << "Enter diagnosis: ";
     cin >> temp.diagnosis;
+
+    patients[i] = temp;
 
 }
 
@@ -150,6 +160,7 @@ void loadPatients(){
 
 }
 int main(){
+    loadPatients();
     int choice;
 
     do {
@@ -173,6 +184,8 @@ int main(){
             updatePatient();
         }else if (choice == 5) {
             savePatients();
+        } else if(choice == 6){
+            cout << "Good Bye" << endl;
         }else {
             cout << "Invalid choice. Try again." << endl;
         }
