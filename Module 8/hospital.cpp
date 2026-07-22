@@ -98,8 +98,55 @@ void updatePatient(){
 
 }
 
+void savePatients(){
+
+    ofstream file("patients.txt");
+
+    if(!file){
+        cout << "Could not open cart.txt" << endl;
+        return;
+    }
+
+    for(int i = 0; i < count; i++){
+        
+        file << patients[i].id << ",";
+        file << patients[i].name << ",";
+        file << patients[i]age << ",";
+        file << patients[i].gender << ",";
+        file << patients[i].diagnosis << ",\n" ;
+
+    }
+}
+
+void loadPatients(){
+    count = 0;
+    ifstream file("patients.txt");
+    string line;
 
 
+
+    while (getline(file, line)) {
+        Pateint p;
+        string idS;
+        string ageS;
+
+        stringstream ss(line);
+
+        getline(ss, idS, ',');
+        getline(ss, p.name, ',');
+        getline(ss, ageS, ',');
+        getline(ss, p.gender, ',');   
+        getline(ss, p.diagnosis, ',');
+
+        p.age = stoi(ageS);
+        p.id = stoi(idS);
+
+        patients[count] = p;
+        count++;
+    }
+
+
+}
 int main(){
     int choice;
 
