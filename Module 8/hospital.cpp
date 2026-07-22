@@ -56,6 +56,50 @@ void displayPatients() {
     }
 }
 
+Pateint searchForPatient() {
+    int searchID;
+
+    cout << "Enter Patient ID to search: ";
+    cin >> searchID;
+
+    int left = 0;
+    int right = count - 1;
+
+    while (left <= right) {
+        int mid = (left + right) / 2;
+
+        if (patients[mid].id == searchID) {
+            return patients[mid];
+        }
+
+        if (patients[mid].id < searchID) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    cout << "Patient not found." << endl;
+}
+
+void updatePatient(){
+    Pateint temp = searchForPateint();
+    cout << "Enter name: ";
+    cin << temp.name;
+
+    cout << "Enter age: ";
+    cin << temp.age;
+
+    cout << "Enter gender: ";
+    cin << temp.gender;
+
+    cout << "Enter diagnosis: ";
+    cin << temp.diagnosis;
+
+}
+
+
+
 int main(){
     int choice;
 
