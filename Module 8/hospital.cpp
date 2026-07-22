@@ -1,4 +1,6 @@
 #include <string>
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -24,9 +26,34 @@ public:
 };
 
 const int MAX_PATIENTS = 100;
+Patient* patients = new Patient[MAX_PATIENTS];
+int count = 0;
 
 void addPatient(){
+    Patient patient;
 
+    patient.id = count;
+    count++;
+
+    cout << "Enter name: ";
+    cin << patient.name;
+
+    cout << "Enter age: ";
+    cin << patient.age;
+
+    cout << "Enter gender: ";
+    cin << patient.gender;
+
+    cout << "Enter diagnosis: ";
+    cin << patient.diagnosis;
+
+    patients[count] = patient;
+}
+
+void displayPatients() {
+    for (int i = 0; i < count; i++) {
+        cout << patients[i].name << endl;
+    }
 }
 
 int main(){
@@ -59,5 +86,7 @@ int main(){
         cout << endl;
     
     } while (choice != 6);
+
+    delete[] patients;
     
 }
