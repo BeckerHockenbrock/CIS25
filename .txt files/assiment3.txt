@@ -1,0 +1,544 @@
+Module 7:
+
+Code: 
+
+#include <cstddef>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+class Pokemon{
+public:
+    int id;
+    string name;
+    string type1;
+    string type2;
+    int total;
+    int hp;
+    int attack;
+    int defense;
+    int specialAttack;
+    int specialDefense;
+    int speed;
+
+    void displayPokemon() {
+        cout << "Name: " << name << endl;
+        cout << "Type: " << type1 << endl;
+        if(!type2.empty()){
+            cout << "Second Type: " << type2 << endl;
+        }
+        cout << "HP: " << hp << endl;
+        cout << "Attack: " << attack << endl;
+        cout << "Defense: " << defense << endl;
+        cout << "Special Attack: " << specialAttack << endl;
+        cout << "Special Defense: " << specialDefense << endl;
+        cout << "Speed: " << speed << endl;
+    }
+
+
+
+};
+
+
+vector<Pokemon> loadPokemon() {
+    vector<Pokemon> pokemonList;
+
+    ifstream file("Pokemon.csv");
+
+    if (!file) {
+        cout << "Could not open pokemon.csv" << endl;
+        return pokemonList;
+    }
+
+    string line;
+    getline(file, line);
+
+      while (getline(file, line)) {
+        stringstream ss(line);
+
+        string id;
+        string name;
+        string type1;
+        string type2;
+        string total;
+        string hp;
+        string attack;
+        string defense;
+        string specialAttack;
+        string specialDefense;
+        string speed;
+
+        getline(ss, id, ',');
+        getline(ss, name, ',');
+        getline(ss, type1, ',');
+        getline(ss, type2, ',');
+        getline(ss, total, ',');
+        getline(ss, hp, ',');
+        getline(ss, attack, ',');
+        getline(ss, defense, ',');
+        getline(ss, specialAttack, ',');
+        getline(ss, specialDefense, ',');
+        getline(ss, speed, ',');
+
+        Pokemon currentPokemon;
+
+        currentPokemon.id = stoi(id);
+        currentPokemon.name = name;
+        currentPokemon.type1 = type1;
+        currentPokemon.type2 = type2;
+        currentPokemon.hp = stoi(hp);
+        currentPokemon.attack = stoi(attack);
+        currentPokemon.defense = stoi(defense);
+        currentPokemon.specialAttack = stoi(specialAttack);
+        currentPokemon.specialDefense = stoi(specialDefense);
+        currentPokemon.speed = stoi(speed);
+
+        pokemonList.push_back(currentPokemon);
+    }
+
+    file.close();
+
+    return pokemonList;
+
+}
+
+int main(){
+
+    //loads all the pokemon
+    vector<Pokemon> pokemonList = loadPokemon();
+
+    string name;
+    bool found = false;
+
+    //displays the first 10
+    cout << "Example Pokemon: " << endl;
+    for (int i = 0; i < 10; i++) {
+        pokemonList[i].displayPokemon();
+        cout << endl;
+    }
+    
+    //can look up pokemons name, not repeatable yet though
+    cout << "Enter Pokemon's Name: ";
+    cin >> name;
+
+    for (int i = 0; i < pokemonList.size(); i++) {
+        if (pokemonList[i].name == name) {
+            pokemonList[i].displayPokemon();
+            found = true;
+        }
+    }
+
+    if(found == false){
+        cout << "Pokemon not found." << endl;
+    }
+
+}
+
+Data(First 10 rows):
+
+#,Name,Type 1,Type 2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generation,Legendary
+1,Bulbasaur,Grass,Poison,318,45,49,49,65,65,45,1,False
+2,Ivysaur,Grass,Poison,405,60,62,63,80,80,60,1,False
+3,Venusaur,Grass,Poison,525,80,82,83,100,100,80,1,False
+3,VenusaurMega Venusaur,Grass,Poison,625,80,100,123,122,120,80,1,False
+4,Charmander,Fire,,309,39,52,43,60,50,65,1,False
+5,Charmeleon,Fire,,405,58,64,58,80,65,80,1,False
+6,Charizard,Fire,Flying,534,78,84,78,109,85,100,1,False
+6,CharizardMega Charizard X,Fire,Dragon,634,78,130,111,130,85,100,1,False
+6,CharizardMega Charizard Y,Fire,Flying,634,78,104,78,159,115,100,1,False
+
+Output: 
+
+Example Pokemon: 
+Name: Bulbasaur
+Type: Grass
+Second Type: Poison
+HP: 45
+Attack: 49
+Defense: 49
+Special Attack: 65
+Special Defense: 65
+Speed: 45
+
+Name: Ivysaur
+Type: Grass
+Second Type: Poison
+HP: 60
+Attack: 62
+Defense: 63
+Special Attack: 80
+Special Defense: 80
+Speed: 60
+
+Name: Venusaur
+Type: Grass
+Second Type: Poison
+HP: 80
+Attack: 82
+Defense: 83
+Special Attack: 100
+Special Defense: 100
+Speed: 80
+
+Name: VenusaurMega Venusaur
+Type: Grass
+Second Type: Poison
+HP: 80
+Attack: 100
+Defense: 123
+Special Attack: 122
+Special Defense: 120
+Speed: 80
+
+Name: Charmander
+Type: Fire
+HP: 39
+Attack: 52
+Defense: 43
+Special Attack: 60
+Special Defense: 50
+Speed: 65
+
+Name: Charmeleon
+Type: Fire
+HP: 58
+Attack: 64
+Defense: 58
+Special Attack: 80
+Special Defense: 65
+Speed: 80
+
+Name: Charizard
+Type: Fire
+Second Type: Flying
+HP: 78
+Attack: 84
+Defense: 78
+Special Attack: 109
+Special Defense: 85
+Speed: 100
+
+Name: CharizardMega Charizard X
+Type: Fire
+Second Type: Dragon
+HP: 78
+Attack: 130
+Defense: 111
+Special Attack: 130
+Special Defense: 85
+Speed: 100
+
+Name: CharizardMega Charizard Y
+Type: Fire
+Second Type: Flying
+HP: 78
+Attack: 104
+Defense: 78
+Special Attack: 159
+Special Defense: 115
+Speed: 100
+
+Name: Squirtle
+Type: Water
+HP: 44
+Attack: 48
+Defense: 65
+Special Attack: 50
+Special Defense: 64
+Speed: 43
+
+Enter Pokemon's Name: Bulbasaur
+
+Name: Bulbasaur
+Type: Grass
+Second Type: Poison
+HP: 45
+Attack: 49
+Defense: 49
+Special Attack: 65
+Special Defense: 65
+Speed: 45
+
+Module 8:
+
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <string>
+
+
+using namespace std;
+
+struct Patient {
+
+  int id;
+  string name;
+  int age;
+  string gender;
+  string diagnosis;
+
+  void toString() {
+    cout << id << endl;
+    cout << name << endl;
+    cout << age << endl;
+    cout << gender << endl;
+    cout << diagnosis << endl;
+  }
+};
+
+const int MAX_PATIENTS = 100;
+Patient *patients = new Patient[MAX_PATIENTS];
+int pCount = 0;
+
+void addPatient() {
+  if (pCount >= MAX_PATIENTS) {
+    cout << "Database is full, cannot add more patients." << endl;
+    return;
+  }
+  Patient patient;
+
+  patient.id = 10000 + pCount;
+
+  cin.ignore();
+  cout << "Enter patient name: ";
+  getline(cin, patient.name);
+
+  cout << "Enter age: ";
+  cin >> patient.age;
+
+  cout << "Enter gender: ";
+  cin >> patient.gender;
+
+  cin.ignore();
+  cout << "Enter diagnosis: ";
+  getline(cin, patient.diagnosis);
+
+  patients[pCount] = patient;
+  pCount++;
+}
+
+void displayPatients() {
+  for (int i = 0; i < pCount; i++) {
+    cout << "ID: " << patients[i].id << endl;
+    cout << "Name: " << patients[i].name << endl;
+    cout << "Age: " << patients[i].age << endl;
+    cout << "Gender: " << patients[i].gender << endl;
+    cout << "Diagnosis: " << patients[i].diagnosis << "\n\n";
+  }
+}
+
+int searchForPatient() {
+  int searchID;
+
+  cout << "Enter Patient ID to search: ";
+  cin >> searchID;
+
+  int left = 0;
+  int right = pCount - 1;
+
+  while (left <= right) {
+    int mid = (left + right) / 2;
+
+    if (patients[mid].id == searchID) {
+      patients[mid].toString();
+      return mid;
+    }
+
+    if (patients[mid].id < searchID) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  cout << "Patient not found." << endl;
+  return -1;
+}
+
+void updatePatient() {
+  int i = searchForPatient();
+
+  if (i == -1) {
+    return;
+  }
+    
+  Patient temp = patients[i];
+
+  cin.ignore();
+  cout << "Enter name: ";
+  getline(cin, temp.name);
+
+  cout << "Enter age: ";
+  cin >> temp.age;
+
+  cout << "Enter gender: ";
+  cin >> temp.gender;
+
+  cin.ignore();
+  cout << "Enter diagnosis: ";
+  getline(cin, temp.diagnosis);
+
+  patients[i] = temp;
+}
+
+void savePatients() {
+
+  ofstream file("patients.txt");
+
+  if (!file) {
+    cout << "Could not open patients.txt" << endl;
+    return;
+  }
+
+  for (int i = 0; i < pCount; i++) {
+
+    file << patients[i].id << ",";
+    file << patients[i].name << ",";
+    file << patients[i].age << ",";
+    file << patients[i].gender << ",";
+    file << patients[i].diagnosis << ",\n";
+  }
+}
+
+void loadPatients() {
+  pCount = 0;
+  ifstream file("patients.txt");
+  string line;
+
+  while (getline(file, line)) {
+
+    if (pCount >= MAX_PATIENTS) {
+      cout << "Database is full, cannot add more patients." << endl;
+      return;
+    }
+
+    Patient p;
+    string idS;
+    string ageS;
+
+    stringstream ss(line);
+
+    getline(ss, idS, ',');
+    getline(ss, p.name, ',');
+    getline(ss, ageS, ',');
+    getline(ss, p.gender, ',');
+    getline(ss, p.diagnosis, ',');
+
+    p.age = stoi(ageS);
+    p.id = stoi(idS);
+
+    patients[pCount] = p;
+    pCount++;
+  }
+}
+int main() {
+  loadPatients();
+  int choice;
+
+  do {
+
+    cout << "1. Add a patient" << endl;
+    cout << "2. Display all patients" << endl;
+    cout << "3. Search for a patient by ID" << endl;
+    cout << "4. Update patient information" << endl;
+    cout << "5. Save patients to file" << endl;
+    cout << "6. Exit program" << endl;
+    cout << "Enter your choice (1-6): ";
+    cin >> choice;
+
+    if (choice == 1) {
+      addPatient();
+    } else if (choice == 2) {
+      displayPatients();
+    } else if (choice == 3) {
+      searchForPatient();
+    } else if (choice == 4) {
+      updatePatient();
+    } else if (choice == 5) {
+      savePatients();
+    } else if (choice == 6) {
+      cout << "Good Bye!" << endl;
+    } else {
+      cout << "Invalid choice. Try again." << endl;
+    }
+    cout << endl;
+
+  } while (choice != 6);
+
+  delete[] patients;
+}
+
+Module 9:
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class User{
+    protected: string username;
+
+    public:
+
+
+    virtual void accessLevel(){
+        cout << "Public Access";
+    }
+
+    void sayHi(){
+        cout << "Hello" << endl;
+    }
+
+    void setUsername(string s){
+        username = s;
+    }
+
+    string getUsername(){
+        return username;
+    }
+    
+
+};
+
+class Employee : public User{
+public: 
+
+    void accessLevel(){
+        cout << "Employee Access" << endl;
+    }
+
+};
+
+class InventoryManger : public User{
+public: 
+
+    void accessLevel(){
+        cout << "Full inventory access" << endl;
+    }
+
+};
+
+class BigBoss : public User{
+public:
+
+    void accessLevel(){
+        cout << "Total access" << endl;
+    }
+
+};
+
+int main(){
+
+    Employee emp;
+    emp.sayHi();
+    emp.accessLevel();
+    emp.setUsername("Bob");
+    cout << emp.getUsername() << endl;
+
+
+}
+
