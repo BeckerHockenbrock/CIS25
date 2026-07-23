@@ -1,0 +1,6 @@
+Scope of Work
+
+Project Title: Gravebound: Ascension
+Student Name: Becker Hockenbrock
+
+Gravebound: Ascension is a terminal-based C++ fantasy game where the player starts as a weak dungeon runner and becomes a necromancer by battling enemies and raising selected defeated enemies into an undead army. The game includes Ice Elves, Red Orcs, Dwarves, Dragons, and Shadow Knights, with a raise-or-sacrifice system that uses mana, soul fragments, unit ranks, and command-capacity limits. The program will save the player’s level, inventory, dungeon progress, and undead army in text files so progress remains after the game closes.
