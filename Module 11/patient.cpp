@@ -24,6 +24,14 @@ int main(){
     cout << "ID: " << p2->id << endl;
     cout << "ID: " << p1.id << endl;
 
+    cout << "Name: " << p2-> name << endl;
+    cout << "Name: " << p1.name << endl;
+
+    cout << "Age: " << p2->age << endl;
+    cout << "Age: " << p1.age << endl;
+
+
+
     cout << "Mem: " << p2 << endl;
 
 }
