@@ -33,12 +33,21 @@ public:
 
 };
 
-int main(){
+class BigBoss : public User{
+public:
 
+    void accessLevel(){
+        cout << "Total access" << endl;
+    }
+
+};
+
+int main(){
 
     Employee emp;
     emp.sayHi();
     emp.accessLevel();
+    
 
 }
 
