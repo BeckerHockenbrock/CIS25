@@ -29,5 +29,3 @@
 # Notes / README and this ignore file itself
 !*.md
 !.gitignore
-
-gradeData.txt

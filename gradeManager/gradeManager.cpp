@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <limits>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -15,6 +16,34 @@ struct Student {
 
 vector<Student> students;
 int nextID = 1000;
+
+int getNumber(string prompt) {
+    int number;
+
+    cout << prompt;
+
+    while (!(cin >> number)) {
+        cout << "Please enter a whole number. Try again: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    return number;
+}
+
+double getGradeNumber(string prompt) {
+    double grade;
+
+    cout << prompt;
+
+    while (!(cin >> grade) || grade < 0 || grade > 100) {
+        cout << "Please enter a grade from 0 to 100. Try again: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    return grade;
+}
 
 void saveStudents() {
     ofstream file("gradeData.txt");
@@ -183,9 +212,7 @@ void addGrade() {
     // The list appears here so the user does not need to remember an ID.
     showStudentIDs();
 
-    int id;
-    cout << "Enter student ID to add a grade: ";
-    cin >> id;
+    int id = getNumber("Enter student ID to add a grade: ");
 
     int index = findStudentByID(id);
 
@@ -194,14 +221,7 @@ void addGrade() {
         return;
     }
 
-    double grade;
-    cout << "Enter grade (0-100): ";
-    cin >> grade;
-
-    if (grade < 0 || grade > 100) {
-        cout << "Grade must be from 0 to 100." << endl;
-        return;
-    }
+    double grade = getGradeNumber("Enter grade (0-100): ");
 
     students[index].grades.push_back(grade);
     saveStudents();
@@ -251,9 +271,7 @@ void searchByName() {
 void editGrade() {
     showStudentIDs();
 
-    int id;
-    cout << "Enter student ID: ";
-    cin >> id;
+    int id = getNumber("Enter student ID: ");
 
     int index = findStudentByID(id);
 
@@ -272,23 +290,14 @@ void editGrade() {
         cout << i + 1 << ". " << students[index].grades[i] << endl;
     }
 
-    int gradeNumber;
-    cout << "Enter grade number to edit: ";
-    cin >> gradeNumber;
+    int gradeNumber = getNumber("Enter grade number to edit: ");
 
     if (gradeNumber < 1 || gradeNumber > students[index].grades.size()) {
         cout << "Invalid grade number." << endl;
         return;
     }
 
-    double newGrade;
-    cout << "Enter the new grade (0-100): ";
-    cin >> newGrade;
-
-    if (newGrade < 0 || newGrade > 100) {
-        cout << "Grade must be from 0 to 100." << endl;
-        return;
-    }
+    double newGrade = getGradeNumber("Enter the new grade (0-100): ");
 
     students[index].grades[gradeNumber - 1] = newGrade;
     saveStudents();
@@ -298,9 +307,7 @@ void editGrade() {
 void removeGrade() {
     showStudentIDs();
 
-    int id;
-    cout << "Enter student ID: ";
-    cin >> id;
+    int id = getNumber("Enter student ID: ");
 
     int index = findStudentByID(id);
 
@@ -319,9 +326,7 @@ void removeGrade() {
         cout << i + 1 << ". " << students[index].grades[i] << endl;
     }
 
-    int gradeNumber;
-    cout << "Enter grade number to remove: ";
-    cin >> gradeNumber;
+    int gradeNumber = getNumber("Enter grade number to remove: ");
 
     if (gradeNumber < 1 || gradeNumber > students[index].grades.size()) {
         cout << "Invalid grade number." << endl;
@@ -349,8 +354,7 @@ int main() {
         cout << "7. Remove a grade" << endl;
         cout << "8. Save data to file" << endl;
         cout << "9. Exit" << endl;
-        cout << "Enter your choice (1-9): ";
-        cin >> choice;
+        choice = getNumber("Enter your choice (1-9): ");
 
         if (choice == 1) {
             addStudent();
