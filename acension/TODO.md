@@ -2,7 +2,7 @@
 
 ## Project Goal
 
-Create a terminal-based C++ fantasy game where a weak dungeon runner becomes a necromancer. The player fights enemy factions, gains experience, raises selected defeated enemies into an undead army, and saves progress to files.
+Create a terminal-based C++ fantasy game where a weak dungeon runner becomes a necromancer. The player fights enemy factions, gains experience, raises defeated enemies into an undead army, and saves progress to files.
 
 ## Keep Version 1 Simple
 
@@ -14,19 +14,18 @@ Create a terminal-based C++ fantasy game where a weak dungeon runner becomes a n
 
 ## 1. Set Up the Project
 
-- [ ] Create `src/` for C++ source files.
+- [x] Create `src/` for C++ source files.
 - [ ] Create `data/` for saved game files.
-- [ ] Create `tests/` for simple test data.
-- [ ] Add a `README.md` with build and run instructions.
-- [ ] Add a `Makefile` or simple build command.
+- [ ] Add a `README.md` with build and run instructions (using direct `g++` compile commands).
 
 ## 2. Create the Core Data Types
 
-- [ ] Create a `Player` class: name, level, health, mana, soul fragments, and command capacity.
-- [ ] Create a `Unit` class: name, race, role, rank, health, attack, and command cost.
+- [ ] Create a base `Creature` class: name, health, mana, level, attack, defense, and core methods.
+- [ ] Create a `Player` class derived from `Creature` (or incorporating base stats: Strength, Agility, Perception, Vitality, Intelligence) and command capacity.
+- [ ] Create `IceElf` and `RedOrc` classes inheriting from `Creature`.
 - [ ] Create enums for `Race`, `Role`, and `Rank`.
 - [ ] Create an `Army` class that stores the player's raised units.
-- [ ] Create an `Enemy` or `DungeonEncounter` class for battles.
+- [ ] Create a `Dungeon` / `DungeonEncounter` class for dungeon exploration and battles.
 
 ## 3. Build the Main Menu
 
@@ -38,18 +37,19 @@ Create a terminal-based C++ fantasy game where a weak dungeon runner becomes a n
 - [ ] Save Game
 - [ ] Exit
 
-## 4. Build Basic Combat
+## 4. Work Out Turn-Based Combat System
 
-- [ ] Let the player choose attack, defend, use a healing item, or command a raised unit.
-- [ ] Give enemies health, attack, and a simple turn.
-- [ ] Award experience and soul fragments after a win.
+- [ ] Implement basic turn-based combat framework.
+- [ ] Let the player choose actions (Attack, Defend, Use Item, Command Raised Unit).
+- [ ] Give enemies turns and combat logic using `Creature` methods.
+- [ ] Award experience after winning encounters.
 - [ ] End the run if the player's health reaches zero.
 
 ## 5. Build the Necromancy System
 
 - [ ] After a battle, create remains for a defeated enemy.
 - [ ] Let the player choose Raise, Sacrifice, or Leave.
-- [ ] Raising costs mana and soul fragments.
+- [ ] Raising costs mana (no soul fragments).
 - [ ] Check command capacity before adding a unit to the army.
 - [ ] Give raised units a role: Vanguard, Ranger, Guard, or Ritualist.
 - [ ] Make higher-rank units cost more command capacity.
@@ -81,18 +81,10 @@ Create a terminal-based C++ fantasy game where a weak dungeon runner becomes a n
 
 ## 8. Test Before Calling It Done
 
-- [ ] Compile with warnings enabled.
+- [ ] Compile with warnings enabled using direct `g++` commands.
 - [ ] Test a new game with no save file.
 - [ ] Test winning and losing a battle.
 - [ ] Test Raise, Sacrifice, and Leave choices.
 - [ ] Test an army at maximum command capacity.
 - [ ] Test save and load after making progress.
 - [ ] Check that invalid menu input does not crash the program.
-
-## Definition of Done for Version 1
-
-- [ ] The game runs completely in the terminal.
-- [ ] The player can fight at least one Ice Elf and one Red Orc encounter.
-- [ ] The player can raise or sacrifice enemies.
-- [ ] The player can save and load progress.
-- [ ] The project has clear source, data, and README files.
