@@ -1,9 +1,6 @@
-GitHub Repository: https://github.com/BeckerHockenbrock/CIS25
-Assignment 4 Folder: https://github.com/BeckerHockenbrock/CIS25/tree/main/Assignment%204
+Repo: https://github.com/BeckerHockenbrock/CIS25
 
-MODULE 10
-
-Code:
+Module 10: 
 
 #include <iostream>
 #include <string>
@@ -63,19 +60,19 @@ Name: basketball
 Price: 10.5
 basketball was descontructed.
 
-Knowledge Check:
+Knowlege check:
 
-1. In my Product program, the constructor is used when the Product object is created.
+1: In my Product program, the constructor is used when the Product object is created.
 It initializes the product’s ID, name, and price, then prints a message confirming that the object was made.
 The destructor runs automatically when the object reaches the end of its lifetime, which happens when main() ends in this program.
-Right now it prints a message; in a larger project, a destructor can also release resources the object owns.
+Right now it prints a message; in a larger project, a destructor can also release the memory the object owns.
 
-2. The Product class, constructor, and destructor are all connected to the same object type.
+2: The Product class, constructor, and destructor are all connected to the same object type.
 The class is the blueprint for Product objects.
-The constructor, Product(...), and destructor, ~Product(), are special member functions of that class.
+The constructor, Product(...), and destructor, ~Product(), are special member functions of that class
 Both use the class name and have no return type. The constructor handles object setup, while the destructor handles object cleanup.
 
-3. Expected Output:
+Expected Output:
 
 Made the basketball object.
 Id: 100
@@ -83,11 +80,7 @@ Name: basketball
 Price: 10.5
 basketball was descontructed.
 
-Sources:
-https://learn.microsoft.com/en-us/cpp/cpp/constructors-cpp?view=msvc-170
-https://learn.microsoft.com/en-us/cpp/cpp/destructors-cpp?view=msvc-170
-
-MODULE 11
+Module 11:
 
 Code: 
 
@@ -129,26 +122,14 @@ int main(){
 
 }
 
-Output:
-
-ID: 107
-ID: 107
-Name: John
-Name: John
-Age: 35
-Age: 35
-Mem: 0x... (the memory address changes each time the program runs)
-
-Knowledge Check:
-
-1. A pointer is a variable that stores the memory address of another variable or object.
+1: A pointer is a variable that stores the memory address of another variable or object.
 In my program, p2 is a pointer to the Patient object p1.
-I used the arrow operator, such as p2->id, to access the patient’s information through the pointer.
+Then I used the arrow operator, such as p2->id, to access theIn my program, p2 is a pointer to the Patient object p1. patient’s information through the pointer.
 
-2. In this program, the & operator is the address-of operator. &p1 gets the memory address of the Patient object named p1.
+2: In this program, the & operator is the address-of operator. &p1 gets the memory address of the Patient object named p1.
 That address is stored in p2, which allows p2 to point to the same patient object.
 
-3. Expected Output:
+Expected output:
 
 ID: 107
 ID: 107
@@ -156,17 +137,14 @@ Name: John
 Name: John
 Age: 35
 Age: 35
-Mem: 0x... (the memory address changes each time the program runs)
+Mem: 0x...
 
-Sources:
-https://www.learncpp.com/cpp-tutorial/introduction-to-pointers/
-https://en.cppreference.com/cpp/language/operator_member_access
 
-SCOPE OF WORK
+SOW:
 
-Project Title: Gravebound: Ascension
-Student Name: Becker Hockenbrock
+Based on solo leveling. May be a bit ambituious. 
 
-Gravebound: Ascension is a terminal-based C++ fantasy game where the player starts as a weak dungeon runner and becomes a necromancer by battling enemies and raising selected defeated enemies into an undead army.
+Ascension is a terminal-based C++ fantasy game where the player starts as a weak dungeon runner and becomes a necromancer by battling enemies and raising selected defeated enemies into an undead army.
 The game includes Ice Elves, Red Orcs, Dwarves, Dragons, and Shadow Knights, with a raise-or-sacrifice system that uses mana, soul fragments, unit ranks, and command-capacity limits. 
 The program will save the player’s level, inventory, dungeon progress, and undead army in text files so progress remains after the game closes.
+
