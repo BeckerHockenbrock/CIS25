@@ -1,9 +1,13 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 class User{
-public:
+    protected: string username;
+
+    public:
+
 
     virtual void accessLevel(){
         cout << "Public Access";
@@ -12,6 +16,15 @@ public:
     void sayHi(){
         cout << "Hello" << endl;
     }
+
+    void setUsername(string s){
+        username = s;
+    }
+
+    string getUsername(){
+        return username;
+    }
+    
 
 };
 
@@ -47,7 +60,9 @@ int main(){
     Employee emp;
     emp.sayHi();
     emp.accessLevel();
-    
+    emp.setUsername("Bob");
+    cout << emp.getUsername() << endl;
+
 
 }
 
