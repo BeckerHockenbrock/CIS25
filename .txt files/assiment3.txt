@@ -472,6 +472,91 @@ int main() {
   delete[] patients;
 }
 
+Output:
+
+becker@Beckers-MacBook-Air Module 8 % ./hospital.exe
+1. Add a patient
+2. Display all patients
+3. Search for a patient by ID
+4. Update patient information
+5. Save patients to file
+6. Exit program
+Enter your choice (1-6): 1
+Enter patient name: Bobby
+Enter age: 4
+Enter gender: 3
+Enter diagnosis: Dead
+
+1. Add a patient
+2. Display all patients
+3. Search for a patient by ID
+4. Update patient information
+5. Save patients to file
+6. Exit program
+Enter your choice (1-6): 2
+ID: 10000
+Name: Bobby
+Age: 4
+Gender: 3
+Diagnosis: Dead
+
+
+1. Add a patient
+2. Display all patients
+3. Search for a patient by ID
+4. Update patient information
+5. Save patients to file
+6. Exit program
+Enter your choice (1-6): 3
+Enter Patient ID to search: 10000
+10000
+Bobby
+4
+3
+Dead
+
+1. Add a patient
+2. Display all patients
+3. Search for a patient by ID
+4. Update patient information
+5. Save patients to file
+6. Exit program
+Enter your choice (1-6): 5
+
+1. Add a patient
+2. Display all patients
+3. Search for a patient by ID
+4. Update patient information
+5. Save patients to file
+6. Exit program
+Enter your choice (1-6): 6
+Good Bye!
+
+becker@Beckers-MacBook-Air Module 8 % ./hospital.exe
+1. Add a patient
+2. Display all patients
+3. Search for a patient by ID
+4. Update patient information
+5. Save patients to file
+6. Exit program
+Enter your choice (1-6): 2
+ID: 10000
+Name: Bobby
+Age: 4
+Gender: 3
+Diagnosis: Dead
+
+
+1. Add a patient
+2. Display all patients
+3. Search for a patient by ID
+4. Update patient information
+5. Save patients to file
+6. Exit program
+Enter your choice (1-6): 6
+Good Bye!
+
+
 Module 9:
 
 #include <iostream>
@@ -541,4 +626,10 @@ int main(){
 
 
 }
+
+Output: 
+
+Hello
+Employee Access
+Bob
 
