@@ -82,6 +82,46 @@ basketball was descontructed.
 
 Module 11:
 
+Code: 
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Patient{
+
+    int id;
+    string name;
+    int age;
+
+};
+
+int main(){
+
+    //normal
+    Patient p1;
+    p1.id = 107;
+    p1.name = "John";
+    p1.age = 35;
+
+    Patient* p2 = &p1;
+
+    cout << "ID: " << p2->id << endl;
+    cout << "ID: " << p1.id << endl;
+
+    cout << "Name: " << p2-> name << endl;
+    cout << "Name: " << p1.name << endl;
+
+    cout << "Age: " << p2->age << endl;
+    cout << "Age: " << p1.age << endl;
+
+
+
+    cout << "Mem: " << p2 << endl;
+
+}
+
 1: A pointer is a variable that stores the memory address of another variable or object.
 In my program, p2 is a pointer to the Patient object p1.
 Then I used the arrow operator, such as p2->id, to access theIn my program, p2 is a pointer to the Patient object p1. patient’s information through the pointer.
@@ -98,5 +138,8 @@ Name: John
 Age: 35
 Age: 35
 Mem: 0x...
+
+
+SOW:
 
 
