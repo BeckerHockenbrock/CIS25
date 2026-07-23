@@ -1,0 +1,102 @@
+Repo: https://github.com/BeckerHockenbrock/CIS25
+
+Module 10: 
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Product{
+private:
+
+    int id;
+    string name;
+    double price;
+
+public:
+
+    Product(int i, string n, double p){
+
+        id = i;
+        name = n;
+        price = p;
+
+        cout << "Made the " << name << " object." << endl;
+
+    }
+
+    ~Product(){
+        cout << name << " was descontructed." << endl;
+    }
+
+    void printDetails(){
+
+        cout << "Id: " << id << endl;
+        cout << "Name: " << name << endl;
+        cout << "Price: " << price << endl;
+
+    }
+
+
+
+};
+
+int main(){
+
+    Product p = Product(100, "basketball", 10.50);
+    p.printDetails();
+    return 0;
+
+
+}
+
+Output: 
+
+becker@Mac Module 10 % ./product.exe
+Made the basketball object.
+Id: 100
+Name: basketball
+Price: 10.5
+basketball was descontructed.
+
+Knowlege check:
+
+1: In my Product program, the constructor is used when the Product object is created.
+It initializes the product’s ID, name, and price, then prints a message confirming that the object was made.
+The destructor runs automatically when the object reaches the end of its lifetime, which happens when main() ends in this program.
+Right now it prints a message; in a larger project, a destructor can also release the memory the object owns.
+
+2: The Product class, constructor, and destructor are all connected to the same object type.
+The class is the blueprint for Product objects.
+The constructor, Product(...), and destructor, ~Product(), are special member functions of that class
+Both use the class name and have no return type. The constructor handles object setup, while the destructor handles object cleanup.
+
+Expected Output:
+
+Made the basketball object.
+Id: 100
+Name: basketball
+Price: 10.5
+basketball was descontructed.
+
+Module 11:
+
+1: A pointer is a variable that stores the memory address of another variable or object.
+In my program, p2 is a pointer to the Patient object p1.
+Then I used the arrow operator, such as p2->id, to access theIn my program, p2 is a pointer to the Patient object p1. patient’s information through the pointer.
+
+2: In this program, the & operator is the address-of operator. &p1 gets the memory address of the Patient object named p1.
+That address is stored in p2, which allows p2 to point to the same patient object.
+
+Expected output:
+
+ID: 107
+ID: 107
+Name: John
+Name: John
+Age: 35
+Age: 35
+Mem: 0x...
+
+
