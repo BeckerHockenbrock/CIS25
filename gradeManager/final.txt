@@ -1,0 +1,10 @@
+The code is in the grademanager directory.
+My github is: https://github.com/BeckerHockenbrock/CIS25
+
+My slideshow is at: https://docs.google.com/presentation/d/1ulYB1rQ5ZHMsc-vwTR8M4FIygIreKHuKwAb5JlpEnUo/edit?slide=id.p8#slide=id.p8
+
+C++ can be useful for AI when speed and performance matter. 
+It is often used in things like self-driving cars, robots, video games, and other programs that need to process a lot of information quickly. 
+C++ gives programmers more control over memory and computer hardware, which can help AI models run faster and use fewer resources. 
+Python is still more common for creating and training AI models, but C++ can be used to put those models into real programs with tools like TensorFlow or PyTorch. 
+In the future, AI could also improve my Grade Manager by identifying students who are struggling or estimating what grades they would need to raise their average.
