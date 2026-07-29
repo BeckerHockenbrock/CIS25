@@ -1,38 +1,7 @@
 #include <iostream>
+#include "operations.h"
 
 using namespace std;
-
-void doMultiplication() {
-    int n1, n2;
-    cout << "Enter two numbers: ";
-    cin >> n1 >> n2;
-    cout << "Result: " << n1 * n2 << endl;
-}
-
-void doAddition() {
-    int n1, n2;
-    cout << "Enter two numbers: ";
-    cin >> n1 >> n2;
-    cout << "Result: " << n1 + n2 << endl;
-}
-
-void doSubtraction() {
-    int n1, n2;
-    cout << "Enter two numbers: ";
-    cin >> n1 >> n2;
-    cout << "Result: " << n1 - n2 << endl;
-}
-
-void doDivision() {
-    double n1, n2;
-    cout << "Enter two numbers: ";
-    cin >> n1 >> n2;
-    if (n2 != 0) {
-        cout << "Result: " << n1 / n2 << endl;
-    } else {
-        cout << "Error: Division by zero!" << endl;
-    }
-}
 
 int main() {
 
