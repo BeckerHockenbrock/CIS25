@@ -1,6 +1,62 @@
-Module 4
+ASSIGNMENT 2
 
-Debug:
+MODULE 4
+
+Part 1 - Menu Program
+
+Code:
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int choice;
+
+    do {
+        cout << "1. Say Hello" << endl;
+        cout << "2. Do some math" << endl;
+        cout << "3. Exit" << endl;
+        cout << "Enter your choice (1-3): ";
+        
+        cin >> choice;
+
+        if (choice == 1) {
+            cout << "Hello there! Welcome to C++." << endl;
+        } else if (choice == 2) {
+            cout << "2 + 2 = 4 (Quick math!)" << endl;
+        } else if (choice == 3) {
+            cout << "Exiting the program. Goodbye!" << endl;
+        } else {
+            cout << "Invalid choice. Please enter a number between 1 and 3." << endl;
+        }
+
+    } while (choice != 3);
+
+    return 0;
+}
+
+Output:
+
+1. Say Hello
+2. Do some math
+3. Exit
+Enter your choice (1-3): 1
+Hello there! Welcome to C++.
+1. Say Hello
+2. Do some math
+3. Exit
+Enter your choice (1-3): 2
+2 + 2 = 4 (Quick math!)
+1. Say Hello
+2. Do some math
+3. Exit
+Enter your choice (1-3): 3
+Exiting the program. Goodbye!
+
+Part 2 - Debugging Program
+
+Code:
 
 #include <iostream>
 
@@ -44,65 +100,44 @@ int main() {
   return 0;
 }
 
-Menu: 
-#include <iostream>
+Output:
 
-using namespace std;
+Enter three numbers: 5 9 7
+Largest number: 9
 
-int main() {
-    int choice;
+MODULE 5
 
-    do {
-        cout << "1. Say Hello" << endl;
-        cout << "2. Do some math" << endl;
-        cout << "3. Exit" << endl;
-        cout << "Enter your choice (1-3): ";
-        
-        cin >> choice;
+File: operations.h
 
-        if (choice == 1) {
-            cout << "Hello there! Welcome to C++." << endl;
-        } else if (choice == 2) {
-            cout << "2 + 2 = 4 (Quick math!)" << endl;
-        } else if (choice == 3) {
-            cout << "Exiting the program. Goodbye!" << endl;
-        } else {
-            cout << "Invalid choice. Please enter a number between 1 and 3." << endl;
-        }
-
-    } while (choice != 3);
-
-    return 0;
-}
-
-Module 5:
+#ifndef OPERATIONS_H
+#define OPERATIONS_H
 
 #include <iostream>
 
 using namespace std;
 
-void doMultiplication() {
+inline void doMultiplication() {
     int n1, n2;
     cout << "Enter two numbers: ";
     cin >> n1 >> n2;
     cout << "Result: " << n1 * n2 << endl;
 }
 
-void doAddition() {
+inline void doAddition() {
     int n1, n2;
     cout << "Enter two numbers: ";
     cin >> n1 >> n2;
     cout << "Result: " << n1 + n2 << endl;
 }
 
-void doSubtraction() {
+inline void doSubtraction() {
     int n1, n2;
     cout << "Enter two numbers: ";
     cin >> n1 >> n2;
     cout << "Result: " << n1 - n2 << endl;
 }
 
-void doDivision() {
+inline void doDivision() {
     double n1, n2;
     cout << "Enter two numbers: ";
     cin >> n1 >> n2;
@@ -112,6 +147,15 @@ void doDivision() {
         cout << "Error: Division by zero!" << endl;
     }
 }
+
+#endif // OPERATIONS_H
+
+File: menu.cpp
+
+#include <iostream>
+#include "operations.h"
+
+using namespace std;
 
 int main() {
 
@@ -145,7 +189,63 @@ int main() {
     return 0;
 }
 
-Module 6: 
+Output:
+
+1. Do multiplication
+2. Do addition
+3. Do subtraction
+4. Do division
+5. Exit
+Enter your choice (1-5): 1
+Enter two numbers: 3 4
+Result: 12
+
+1. Do multiplication
+2. Do addition
+3. Do subtraction
+4. Do division
+5. Exit
+Enter your choice (1-5): 2
+Enter two numbers: 6 7
+Result: 13
+
+1. Do multiplication
+2. Do addition
+3. Do subtraction
+4. Do division
+5. Exit
+Enter your choice (1-5): 3
+Enter two numbers: 11 4
+Result: 7
+
+1. Do multiplication
+2. Do addition
+3. Do subtraction
+4. Do division
+5. Exit
+Enter your choice (1-5): 4
+Enter two numbers: 5 2
+Result: 2.5
+
+1. Do multiplication
+2. Do addition
+3. Do subtraction
+4. Do division
+5. Exit
+Enter your choice (1-5): 4
+Enter two numbers: 5 0
+Error: Division by zero!
+
+1. Do multiplication
+2. Do addition
+3. Do subtraction
+4. Do division
+5. Exit
+Enter your choice (1-5): 5
+
+MODULE 6
+
+File: shoppingCart.cpp
 
 #include <iostream>
 #include <string>
@@ -245,3 +345,37 @@ int main() {
     } while (choice != 3);
     
 }
+
+Output:
+
+1. Add items to cart
+2. Checkout
+3. Exit
+Enter your choice (1-3): 1
+Item Name: Apple
+Item Price: 1.25
+Number of Items: 4
+Item added to cart.
+
+1. Add items to cart
+2. Checkout
+3. Exit
+Enter your choice (1-3): 1
+Item Name: Bread
+Item Price: 3.5
+Number of Items: 1
+Item added to cart.
+
+1. Add items to cart
+2. Checkout
+3. Exit
+Enter your choice (1-3): 2
+Apple - $1.25 x 4 = $5.00
+Bread - $3.50 x 1 = $3.50
+Total: $8.50
+
+1. Add items to cart
+2. Checkout
+3. Exit
+Enter your choice (1-3): 3
+Thank you for shopping!
